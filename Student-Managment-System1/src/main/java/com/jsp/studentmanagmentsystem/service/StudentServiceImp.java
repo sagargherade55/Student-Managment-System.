@@ -1,5 +1,7 @@
 package com.jsp.studentmanagmentsystem.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class StudentServiceImp implements StudentService{
 	public Student save(Student student) {
 		
 		return repo.save(student);
+	}
+
+	@Override
+	public List<Student> view() {
+		return repo.findAll();
 	}
 
 }
