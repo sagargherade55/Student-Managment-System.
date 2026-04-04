@@ -1,5 +1,7 @@
 package com.jsp.studentmanagmentsystem.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,11 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public Admin save(Admin admin) {
 		return adminRepo.save(admin);
+	}
+
+	@Override
+	public List<Admin> view() {
+		return adminRepo.findAll();
 	}
 
 }
