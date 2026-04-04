@@ -28,6 +28,9 @@ public class Admin {
 		this.email = email;
 		this.password = password;
 	}
+	
+	
+
 
 	public int getId() {
 		return id;
@@ -50,6 +53,13 @@ public class Admin {
 	}
 
 	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
+
+	public Admin(String email, String password) {
+		this.email = email;
 		this.password = password;
 	}
 

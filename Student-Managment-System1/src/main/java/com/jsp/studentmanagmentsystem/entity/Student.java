@@ -1,9 +1,11 @@
 package com.jsp.studentmanagmentsystem.entity;
 
+
+
 import org.hibernate.annotations.GenericGenerator;
 
 import com.jsp.studentmanagmentsystem.customid.CustomId;
-import com.jsp.studentmanagmentsystem.customid.CustomPRN;
+//import com.jsp.studentmanagmentsystem.customid.CustomPRN;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +18,7 @@ public class Student {
 	@Id
 	@GeneratedValue(generator = "custom_id")
 	@GenericGenerator(name = "custom_id", type = CustomId.class)
-	private int id;
+	private String id;
 	private String name;
 	private String college;
 	@Column(nullable = false, unique = true)
@@ -26,13 +28,13 @@ public class Student {
 	private String branch;
 	private String dob;
 	
-	@GeneratedValue(generator = "custom_prn")
-	@GenericGenerator(name = "custom_prn", type = CustomPRN.class)
+//	@GeneratedValue(generator = "custom_prn")
+//	@GenericGenerator(name = "custom_prn", type = CustomPRN.class)
 	@Column(nullable = false, unique = true)
 	private String prn;
 	public Student() {
 	}
-	public Student(int id, String name, String college, String email, long contact, String branch, String dob,
+	public Student(String id, String name, String college, String email, long contact, String branch, String dob,
 			String prn) {
 		this.id = id;
 		this.name = name;
@@ -43,10 +45,23 @@ public class Student {
 		this.dob = dob;
 		this.prn = prn;
 	}
-	public int getId() {
+	
+	
+	
+	public Student(String name, String college, String email, long contact, String branch, String dob, String prn) {
+		
+		this.name = name;
+		this.college = college;
+		this.email = email;
+		this.contact = contact;
+		this.branch = branch;
+		this.dob = dob;
+		this.prn = prn;
+	}
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {

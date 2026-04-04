@@ -1,8 +1,8 @@
 package com.jsp.studentmanagmentsystem.service;
 
-import org.springframework.stereotype.Service;
+import com.jsp.studentmanagmentsystem.entity.Admin;
 
-@Service
 public interface AdminService {
 
+	public Admin save(Admin admin);
 }
