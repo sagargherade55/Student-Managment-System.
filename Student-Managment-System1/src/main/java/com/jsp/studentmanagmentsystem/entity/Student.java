@@ -3,6 +3,7 @@ package com.jsp.studentmanagmentsystem.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import com.jsp.studentmanagmentsystem.customid.CustomId;
+import com.jsp.studentmanagmentsystem.customid.CustomPRN;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,6 +25,9 @@ public class Student {
 	private long contact;
 	private String branch;
 	private String dob;
+	
+	@GeneratedValue(generator = "custom_prn")
+	@GenericGenerator(name = "custom_prn", type = CustomPRN.class)
 	@Column(nullable = false, unique = true)
 	private String prn;
 	public Student() {
