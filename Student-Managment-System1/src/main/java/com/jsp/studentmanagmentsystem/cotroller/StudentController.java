@@ -30,4 +30,9 @@ public class StudentController {
 	public ResponseEntity<List<Student>> viewAll(){
 		return new ResponseEntity<>(studentService.view(), HttpStatusCode.valueOf(200));
 	}
+	
+	@PostMapping("/saveAll")
+	public ResponseEntity<List<Student>> saveAll(@RequestBody List<Student> students){
+		return new ResponseEntity<List<Student>>(studentService.saveAll(students), HttpStatusCode.valueOf(201));
+	}
 }
