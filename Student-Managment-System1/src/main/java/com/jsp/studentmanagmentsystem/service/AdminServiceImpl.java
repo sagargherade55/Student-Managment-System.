@@ -23,7 +23,7 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public List<Admin> view() {
+	public List<Admin> viewAll() {
 		return adminRepo.findAll();
 	}
 
@@ -46,6 +46,17 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public Optional<Admin> getByID(int id) {
 		return adminRepo.findById(id);
+	}
+
+	@Override
+	public Admin updateFullObj(int id,Admin admin) {
+		Optional<Admin> optional = getByID(id);
+		if(optional.isEmpty()) throw new ResoueseNotFoundException("Object is not present in DB");
+		
+		Admin admin2 = optional.get();
+		admin2.setEmail(admin.getEmail());
+		admin2.setPassword(admin.getPassword());
+		return adminRepo.save(admin2);
 	}
 
 }

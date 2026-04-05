@@ -1,11 +1,14 @@
-package com.jsp.studentmanagmentsystem.cotroller;
+package com.jsp.studentmanagmentsystem.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,11 +31,21 @@ public class StudentController {
 	
 	@GetMapping("/view")
 	public ResponseEntity<List<Student>> viewAll(){
-		return new ResponseEntity<>(studentService.view(), HttpStatusCode.valueOf(200));
+		return new ResponseEntity<>(studentService.viewAll(), HttpStatusCode.valueOf(200));
 	}
 	
 	@PostMapping("/saveAll")
 	public ResponseEntity<List<Student>> saveAll(@RequestBody List<Student> students){
 		return new ResponseEntity<List<Student>>(studentService.saveAll(students), HttpStatusCode.valueOf(201));
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Optional<Student>> getByID(@PathVariable("id") String id){
+		return new ResponseEntity<Optional<Student>>(studentService.getByID(id), HttpStatusCode.valueOf(200));
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Student> deleteByID(@PathVariable("id") String id){
+		return new ResponseEntity<Student>(studentService.deleteByID(id), HttpStatusCode.valueOf(200));
 	}
 }
