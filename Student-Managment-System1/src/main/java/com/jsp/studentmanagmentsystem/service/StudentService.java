@@ -15,4 +15,6 @@ public interface StudentService {
 	public List<Student> viewAll();
 	public Optional<Student> getByID(String id);
 	public Student deleteByID(String id);
+	public Student updateFullObj(String id, Student student);
+	public Student findStudentByContact(String contact);
 }

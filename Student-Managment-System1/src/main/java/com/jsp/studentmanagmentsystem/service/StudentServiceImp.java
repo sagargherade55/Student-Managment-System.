@@ -47,4 +47,29 @@ public class StudentServiceImp implements StudentService{
 		return repo.findById(id);
 	}
 
+	@Override
+	public Student updateFullObj(String id, Student student) {
+		Optional<Student> optional = getByID(id);
+		if (optional.isEmpty()) throw new ResoueseNotFoundException("Resourse not present in DB");
+		
+		Student student2 = optional.get();
+		student2.setBranch(student.getBranch());
+		student2.setCollege(student.getCollege());
+		student2.setContact(student.getContact());
+		student2.setDob(student.getDob());
+		student2.setEmail(student.getEmail());
+		student2.setName(student.getName());
+		student2.setPrn(student.getPrn());
+		return repo.save(student2);
+	}
+
+	@Override
+	public Student findStudentByContact(String contact) {
+		Optional<Student> byContact = repo.findByContact(contact);
+		System.out.println("student found :"+byContact);
+		if (byContact.isEmpty()) throw new ResoueseNotFoundException("Student not Present in BD");
+			Student student = byContact.get();
+			return student;
+	}
+
 }

@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jsp.studentmanagmentsystem.entity.Student;
@@ -47,5 +49,16 @@ public class StudentController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Student> deleteByID(@PathVariable("id") String id){
 		return new ResponseEntity<Student>(studentService.deleteByID(id), HttpStatusCode.valueOf(200));
+	}
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Student> updateFullObj(@PathVariable("id") String id, @RequestBody Student student){
+		return new ResponseEntity<Student>(studentService.updateFullObj(id, student), HttpStatusCode.valueOf(200));
+	}
+	
+	@GetMapping("/contact/{contact}")
+	public ResponseEntity<Student> getByContact(@PathVariable("contact") String contact){
+		System.out.println("contact: "+contact);
+		return new ResponseEntity<Student>(studentService.findStudentByContact(contact), HttpStatusCode.valueOf(200));
 	}
 }

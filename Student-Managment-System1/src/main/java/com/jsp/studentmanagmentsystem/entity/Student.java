@@ -24,7 +24,7 @@ public class Student {
 	@Column(nullable = false, unique = true)
 	private String email;
 	@Column(nullable = false, unique = true)
-	private long contact;
+	private String contact;
 	private String branch;
 	private String dob;
 	
@@ -34,7 +34,7 @@ public class Student {
 	private String prn;
 	public Student() {
 	}
-	public Student(String id, String name, String college, String email, long contact, String branch, String dob,
+	public Student(String id, String name, String college, String email, String contact, String branch, String dob,
 			String prn) {
 		this.id = id;
 		this.name = name;
@@ -48,7 +48,7 @@ public class Student {
 	
 	
 	
-	public Student(String name, String college, String email, long contact, String branch, String dob, String prn) {
+	public Student(String name, String college, String email, String contact, String branch, String dob, String prn) {
 		
 		this.name = name;
 		this.college = college;
@@ -82,10 +82,10 @@ public class Student {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public long getContact() {
+	public String getContact() {
 		return contact;
 	}
-	public void setContact(long contact) {
+	public void setContact(String contact) {
 		this.contact = contact;
 	}
 	public String getBranch() {
